@@ -1,0 +1,6 @@
+---
+  - name: "main transfer setup"
+    hosts: fdt
+    sudo: true
+    roles: 
+      - role: fdt

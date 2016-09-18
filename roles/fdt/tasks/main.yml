@@ -1,0 +1,13 @@
+---
+  - name: "Copy FDT jar"
+    copy: src=fdt.jar dest=/var/ owner=root group=root mode=0757
+  - name: "apt upgrade"
+    apt: update_cache=yes
+  - name: "install java version"
+    apt: name=openjdk-7-jre-headless state=present
+  - name: "Create transfers directory"
+    file: path=/tmp/transfers state=directory
+  - name: "run fdt server"
+    command: java -jar fdt.jar -S &
+    args:
+        chdir: /var
